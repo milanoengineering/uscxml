@@ -25,7 +25,9 @@ if(MSVC)
 	elseif (MSVC_VERSION LESS 1900)
 		set(VC_VERSION VC12)
 	else()
-		# set(VC_PLATFORM /p:PlatformToolset=v140)
+		set(VC_VERSION VC14)
+		set(VC_PLATFORM /p:PlatformToolset=v140)
+		set(VC_WINSDK /p:TargetPlatformVersion=10.0.18362.0)
 	endif()
 	
 	set(VSPROJECT_PATH "projects/Win32/${VC_VERSION}/xerces-all/XercesLib")
@@ -38,7 +40,7 @@ if(MSVC)
 	endif()
 	
 	externalproject_add(xerces-c
-		URL http://www.apache.org/dist/xerces/c/3/sources/xerces-c-3.1.4.tar.gz
+		URL http://archive.apache.org/dist/xerces/c/3/sources/xerces-c-3.1.4.tar.gz
 		URL_MD5 21bb097b711a513275379b59757cba4c
 		BUILD_IN_SOURCE 1
 		PREFIX ${CMAKE_BINARY_DIR}/deps/xerces-c
@@ -58,7 +60,7 @@ if(MSVC)
 		)
 else()
 	externalproject_add(xerces-c
-		URL http://www.apache.org/dist/xerces/c/3/sources/xerces-c-3.1.4.tar.gz
+		URL http://archive.apache.org/dist/xerces/c/3/sources/xerces-c-3.1.4.tar.gz
 		URL_MD5 21bb097b711a513275379b59757cba4c
 		BUILD_IN_SOURCE 0
 		PREFIX ${CMAKE_BINARY_DIR}/deps/xerces-c
