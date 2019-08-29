@@ -539,8 +539,8 @@ InterpreterState LargeMicroStep::step(size_t blockMs) {
 	_targetSet.clear();
 	_tmpStates.clear();
 
-	_compatible.clear();
-	_conflicting.clear();
+	_compatible.reset();
+	_conflicting.reset();
 	_transSet.clear();
 
 	if (_flags & USCXML_CTX_FINISHED)
